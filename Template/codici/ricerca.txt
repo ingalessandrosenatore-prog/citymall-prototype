@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CityMall Active Search View - Variant 1</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ff9900",
+                        "primary-dark": "#cc7a00",
+                        "primary-light": "#fff0cc",
+                        "surface-light": "#ffffff",
+                        "surface-grey": "#f5f5f7",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    boxShadow: {
+                        'card': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'card-hover': '0 20px 40px -10px rgba(0,0,0,0.12)',
+                        'float': '0 15px 30px -5px rgba(0, 0, 0, 0.1)',
+                        'keyboard': '0 -2px 10px rgba(0,0,0,0.05)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .ios-keyboard-bg {
+            background-color: #CFD3D9;
+            backdrop-filter: blur(20px);
+        }
+        .ios-key {
+            background-color: #FFFFFF;
+            box-shadow: 0 1px 0 #888888;
+            border-radius: 5px;
+            color: #000;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 20px;font-weight: 400;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 42px;
+            width: 100%;
+            transition: background-color 0.1s;
+        }
+        .ios-key:active {
+            background-color: #E5E5E5;
+        }
+        .ios-key-special {
+            background-color: #B3B9C2;
+            color: #000;
+        }
+        .scroll-mask {
+            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }.card-3d {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+            transform: perspective(1000px) rotateX(0deg) translateY(0);
+        }
+        .card-3d:active {
+            transform: perspective(1000px) rotateX(2deg) translateY(2px);
+        }
+    </style>
+<style>
+        body {
+            min-height: 100dvh;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-white font-display text-gray-900 overflow-hidden h-screen w-full relative selection:bg-primary selection:text-white">
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-[20%] right-[-10%] w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[80px]"></div>
+</div>
+<div class="relative z-10 flex flex-col h-full w-full max-w-md mx-auto">
+<div class="flex items-center justify-between p-6 pt-12 pb-2 z-40 bg-white/80 backdrop-blur-sm sticky top-0">
+<button class="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-md border border-gray-100 text-gray-600 hover:text-primary transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<div class="flex-1 text-center">
+</div>
+<button class="text-sm font-bold text-gray-500 hover:text-gray-900 transition-colors uppercase tracking-wider">
+            Cancel
+        </button>
+</div>
+<div class="flex-1 overflow-y-auto no-scrollbar px-6 pb-[380px] pt-2 scroll-mask">
+<div class="mb-8">
+<div class="flex justify-between items-center mb-4 px-1">
+<h2 class="text-lg font-bold tracking-tight text-gray-800">Recent Searches</h2>
+<span class="text-xs font-medium text-primary cursor-pointer hover:underline">Clear all</span>
+</div>
+<div class="flex flex-col gap-3">
+<div class="group card-3d flex items-center justify-between p-4 rounded-2xl bg-white shadow-card border border-gray-100 cursor-pointer">
+<div class="flex items-center gap-4 overflow-hidden">
+<div class="flex items-center justify-center w-10 h-10 rounded-xl bg-orange-50 text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">history</span>
+</div>
+<div class="flex flex-col truncate">
+<span class="text-sm font-bold text-gray-800 truncate">Cyberdeck Keyboards</span>
+<span class="text-[11px] text-gray-400 font-medium">Electronics • Yesterday</span>
+</div>
+</div>
+<button class="text-gray-300 hover:text-red-400 transition-colors p-1">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="group card-3d flex items-center justify-between p-4 rounded-2xl bg-white shadow-card border border-gray-100 cursor-pointer">
+<div class="flex items-center gap-4 overflow-hidden">
+<div class="flex items-center justify-center w-10 h-10 rounded-xl bg-orange-50 text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">history</span>
+</div>
+<div class="flex flex-col truncate">
+<span class="text-sm font-bold text-gray-800 truncate">Neon Hoodies</span>
+<span class="text-[11px] text-gray-400 font-medium">Fashion • 2 days ago</span>
+</div>
+</div>
+<button class="text-gray-300 hover:text-red-400 transition-colors p-1">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="group card-3d flex items-center justify-between p-4 rounded-2xl bg-white shadow-card border border-gray-100 cursor-pointer">
+<div class="flex items-center gap-4 overflow-hidden">
+<div class="flex items-center justify-center w-10 h-10 rounded-xl bg-orange-50 text-primary shrink-0">
+<span class="material-symbols-outlined text-[20px]">history</span>
+</div>
+<div class="flex flex-col truncate">
+<span class="text-sm font-bold text-gray-800 truncate">Gaming Mouse Wireless</span>
+<span class="text-[11px] text-gray-400 font-medium">Electronics • Last week</span>
+</div>
+</div>
+<button class="text-gray-300 hover:text-red-400 transition-colors p-1">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mb-8">
+<h2 class="text-lg font-bold tracking-tight text-gray-800 mb-4 px-1">Trending</h2>
+<div class="flex flex-wrap gap-3">
+<button class="card-3d flex items-center gap-2 px-4 py-3 rounded-xl bg-white shadow-card border border-gray-100 group">
+<span class="material-symbols-outlined text-primary text-[20px] group-hover:scale-110 transition-transform">trending_up</span>
+<span class="text-sm font-semibold text-gray-600 group-hover:text-gray-900">Smart Home</span>
+</button>
+<button class="card-3d flex items-center gap-2 px-4 py-3 rounded-xl bg-white shadow-card border border-gray-100 group">
+<span class="material-symbols-outlined text-primary text-[20px] group-hover:scale-110 transition-transform">trending_up</span>
+<span class="text-sm font-semibold text-gray-600 group-hover:text-gray-900">Drones</span>
+</button>
+<button class="card-3d flex items-center gap-2 px-4 py-3 rounded-xl bg-white shadow-card border border-gray-100 group">
+<span class="material-symbols-outlined text-primary text-[20px] group-hover:scale-110 transition-transform">trending_up</span>
+<span class="text-sm font-semibold text-gray-600 group-hover:text-gray-900">Holographic Displays</span>
+</button>
+<button class="card-3d flex items-center gap-2 px-4 py-3 rounded-xl bg-white shadow-card border border-gray-100 group">
+<span class="material-symbols-outlined text-primary text-[20px] group-hover:scale-110 transition-transform">trending_up</span>
+<span class="text-sm font-semibold text-gray-600 group-hover:text-gray-900">VR Headsets</span>
+</button>
+</div>
+</div>
+<div>
+<h2 class="text-lg font-bold tracking-tight text-gray-800 mb-4 px-1">Categories</h2>
+<div class="grid grid-cols-2 gap-3">
+<div class="relative h-28 rounded-2xl overflow-hidden group cursor-pointer shadow-md">
+<div class="absolute inset-0 bg-gradient-to-br from-purple-900 to-blue-900 z-0"></div>
+<img alt="Electronics" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500 z-0" data-alt="Abstract electronics circuit board with blue light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTrlomVMvfaObCaYV4VufrzoRzlPeYr4KwlaRLxJugBeCH1kUvQAmFWl2EqI9_DkMYS3acgK7QCFS6Wi2mb2gWdkNw8kStNo6JiFcza5A1MHgbtzR97_vlXNBx-GqGvsz57Elrgo1kU5u1n6C45gHe9W0L6B8ToCjfPUh1dPq0etKUr7v4WKJhSsqzRg_Hi_eVOJql5hVyrgWzOcxpr22eHWI9Nw8a41rdVXhgRJU28mMO_xGEn0b95fhxxUIT1MaRh9LDibzVN9M"/>
+<div class="absolute inset-0 flex items-center justify-center z-10 bg-black/10 group-hover:bg-black/20 transition-colors">
+<span class="text-white font-bold text-lg tracking-wide shadow-black drop-shadow-lg">Electronics</span>
+</div>
+</div>
+<div class="relative h-28 rounded-2xl overflow-hidden group cursor-pointer shadow-md">
+<div class="absolute inset-0 bg-gradient-to-br from-orange-900 to-red-900 z-0"></div>
+<img alt="Fashion" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500 z-0" data-alt="Clothing rack with modern fashion items" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnjgx776dPPQpqi2-b2erYxLIvFKRwRlReTaE8c8TU_Zi27sxmKagrpfqcQROcGPXW22TXAbTeblHbfgvTFge6TwfwEnufHpM8Vg6eMkZe-6wKhlx5pRI_8zqyf1u1wMl2utAZUx_C9PbL_kN39A26skk8iobJAiqWRnVMkZamvmYJmGqn_vUbg5eJAqN6FvN-nDvCZhZuy9Kt-WzVyjiuWyACYgnp3ef3x9t9cidtfhPIRilC4Dxb-6_1QuinHAq_pW75I6_-tYA"/>
+<div class="absolute inset-0 flex items-center justify-center z-10 bg-black/10 group-hover:bg-black/20 transition-colors">
+<span class="text-white font-bold text-lg tracking-wide shadow-black drop-shadow-lg">Fashion</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-[290px] left-0 right-0 px-6 pb-4 z-50">
+<div class="relative group">
+<div class="absolute -inset-2 bg-gradient-to-r from-primary/30 to-orange-400/30 rounded-full blur-xl opacity-60 group-hover:opacity-80 transition duration-500"></div>
+<div class="relative flex items-center w-full h-14 bg-white border border-gray-100 rounded-2xl shadow-float px-4 overflow-hidden ring-2 ring-primary/10 transition-all">
+<input autofocus="" class="w-full h-full bg-transparent border-none text-gray-900 placeholder-gray-400 focus:ring-0 text-base font-medium px-2 caret-primary" placeholder="Find your gear..." type="text" value="Cyber"/>
+<button class="flex items-center justify-center w-10 h-10 rounded-xl bg-orange-50 text-primary hover:bg-primary hover:text-white transition-all transform active:scale-95 shadow-sm">
+<span class="material-symbols-outlined font-bold">search</span>
+</button>
+</div>
+</div>
+</div>
+<div class="absolute bottom-0 w-full h-[290px] ios-keyboard-bg z-50 flex flex-col justify-end pb-2 pt-2 px-1 shadow-keyboard">
+<div class="flex justify-center gap-4 mb-2">
+<span class="text-sm text-gray-600 font-medium">Cyberdeck</span>
+<span class="text-sm text-gray-800 font-bold border-l border-r border-gray-300 px-4">Cyberpunk</span>
+<span class="text-sm text-gray-600 font-medium">Cyber</span>
+</div>
+<div class="flex justify-center w-full gap-[6px] mb-[10px] px-1">
+<button class="ios-key w-[9%]">Q</button>
+<button class="ios-key w-[9%]">W</button>
+<button class="ios-key w-[9%]">E</button>
+<button class="ios-key w-[9%]">R</button>
+<button class="ios-key w-[9%]">T</button>
+<button class="ios-key w-[9%]">Y</button>
+<button class="ios-key w-[9%]">U</button>
+<button class="ios-key w-[9%]">I</button>
+<button class="ios-key w-[9%]">O</button>
+<button class="ios-key w-[9%]">P</button>
+</div>
+<div class="flex justify-center w-full gap-[6px] mb-[10px] px-[5%]">
+<button class="ios-key w-[9%]">A</button>
+<button class="ios-key w-[9%]">S</button>
+<button class="ios-key w-[9%]">D</button>
+<button class="ios-key w-[9%]">F</button>
+<button class="ios-key w-[9%]">G</button>
+<button class="ios-key w-[9%]">H</button>
+<button class="ios-key w-[9%]">J</button>
+<button class="ios-key w-[9%]">K</button>
+<button class="ios-key w-[9%]">L</button>
+</div>
+<div class="flex justify-center w-full gap-[6px] mb-[10px] px-1">
+<button class="ios-key ios-key-special w-[14%]">
+<span class="material-symbols-outlined text-[20px]">arrow_upward</span>
+</button>
+<button class="ios-key w-[9%]">Z</button>
+<button class="ios-key w-[9%]">X</button>
+<button class="ios-key w-[9%]">C</button>
+<button class="ios-key w-[9%]">V</button>
+<button class="ios-key w-[9%]">B</button>
+<button class="ios-key w-[9%]">N</button>
+<button class="ios-key w-[9%]">M</button>
+<button class="ios-key ios-key-special w-[14%]">
+<span class="material-symbols-outlined text-[20px]">backspace</span>
+</button>
+</div>
+<div class="flex justify-center w-full gap-[6px] mb-[6px] px-1">
+<button class="ios-key ios-key-special w-[24%] text-[14px] font-medium">123</button>
+<button class="ios-key w-[50%] flex items-center justify-center">space</button>
+<button class="ios-key ios-key-special bg-blue-500 text-white w-[24%] text-[14px] font-bold !bg-blue-600 !text-white">Go</button>
+</div>
+<div class="h-6 w-full flex justify-center items-center">
+<div class="w-32 h-1 bg-black rounded-full opacity-80"></div>
+</div>
+</div>
+</div>
+
+</body></html>

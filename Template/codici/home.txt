@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CityMall Home Final Refinements</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FF9F1C", // Vibrant Orange/Amber
+              "primary-soft": "#FFBF69",
+              "background-light": "#FAFAFA",
+              "background-dark": "#121212",
+              "surface-light": "#FFFFFF",
+              "surface-dark": "#1E1E1E",
+              "glass-light": "rgba(255, 255, 255, 0.7)",
+              "glass-dark": "rgba(30, 30, 30, 0.7)",
+              "nav-dark": "rgba(22, 28, 40, 0.95)",
+            },
+            fontFamily: {
+              display: ['"Plus Jakarta Sans"', 'sans-serif'],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              '2xl': '1.5rem',
+              '3xl': '2rem',
+            },
+            boxShadow: {
+              'glow': '0 0 20px rgba(255, 159, 28, 0.25)',
+              'glow-hover': '0 0 30px rgba(255, 159, 28, 0.4)',
+              'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+              // Softened floating shadow
+              'floating': '0 8px 20px -6px rgba(0, 0, 0, 0.05), 0 4px 10px -4px rgba(0, 0, 0, 0.03)', 
+              'floating-glow': '0 15px 35px -5px rgba(255, 159, 28, 0.15), 0 10px 10px -5px rgba(255, 159, 28, 0.1)',
+              'icon-glow': '0 0 15px rgba(255, 159, 28, 0.6)',
+              'soft-shadow': '0 4px 20px rgba(0, 0, 0, 0.06)',
+              'nav-shadow': '0 -4px 30px rgba(0, 0, 0, 0.05), 0 4px 10px rgba(0,0,0,0.02)',
+            },
+            backdropBlur: {
+              'xs': '2px',
+            }
+          },
+        },
+      };
+    </script>
+<style>input[type=range] {
+            -webkit-appearance: none; 
+            background: transparent; 
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #FF9F1C;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 159, 28, 0.5);
+            margin-top: -10px; 
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #e2e8f0;
+            border-radius: 2px;
+        }
+        .dark input[type=range]::-webkit-slider-runnable-track {
+            background: #4b5563;
+        }.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;scrollbar-width: none;}
+        .glass-panel {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .dark .glass-panel {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .nav-glow-active {
+            text-shadow: 0 0 12px rgba(255, 159, 28, 0.8);
+        }
+        .text-glow-orange {
+            text-shadow: 0 0 10px rgba(255, 159, 28, 0.5);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 min-h-screen selection:bg-primary selection:text-white pb-28">
+<div class="w-full h-12 flex justify-between items-center px-6 sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<span class="text-xs font-semibold">9:41</span>
+<div class="flex gap-1.5">
+<div class="w-3 h-3 bg-slate-800 dark:bg-slate-200 rounded-full"></div>
+<div class="w-3 h-3 bg-slate-800 dark:bg-slate-200 rounded-full"></div>
+<div class="w-3 h-3 bg-slate-800 dark:bg-slate-200 rounded-full"></div>
+</div>
+</div>
+<header class="px-5 pt-2 mb-4">
+<div class="flex justify-between items-center mb-10 relative h-14">
+<div class="relative z-20 shrink-0 flex justify-center w-12">
+<div class="relative z-20">
+<img alt="Mario Rossi Avatar" class="w-12 h-12 rounded-full object-cover border-2 border-white dark:border-slate-700 shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6OeZ3R0cA-cBmDFLeg4ceLH9i0Cl8oEgv7DllswlI0_cbouM5uXzKEmc7XKkqhZOJy6EvQvMrzXyPCz8VU8wp7_gFUJ8gMy87o0_R6jpBC_KGm8h1peGyMNnAbfOPdv1oqhROIklhLZAyJTVRe_NbSrDNdHblpRE-eIjmGYi5iAbzvZbPKOls2nuJiCOSCNi2qLuB3siifzwKViS-AVckqeWwGFgX_vUKTvwA4eqDduMv7KuJqWHZRaKCBwRcBXzMOSf4d31wOUQ"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white dark:border-background-dark"></div>
+</div>
+<div class="absolute top-10 pt-1 left-1/2 -translate-x-1/2 z-10 w-max">
+<div class="bg-white dark:bg-surface-dark rounded-full px-3 py-1 shadow-md border border-slate-100 dark:border-slate-800 flex flex-col items-center mt-1.5">
+<span class="font-bold text-[10px] leading-tight block text-slate-800 dark:text-slate-100">Mario Rossi</span>
+<p class="text-[9px] text-slate-400 dark:text-slate-500 leading-tight">Via Roma 123</p>
+</div>
+</div>
+</div>
+<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10">
+<h1 class="text-4xl font-extrabold tracking-tight">
+                City<span class="text-primary text-glow-orange">Mall</span>
+</h1>
+</div>
+<div class="flex gap-3 z-20">
+<button class="w-10 h-10 rounded-full bg-surface-light dark:bg-surface-dark shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 transition-transform active:scale-95">
+<span class="material-icons-round">notifications_none</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-light dark:bg-surface-dark shadow-sm border border-slate-100 dark:border-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 transition-transform active:scale-95">
+<span class="material-icons-round">settings</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-2xl shadow-floating border border-slate-100 dark:border-slate-800/50 mt-6">
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-semibold text-slate-600 dark:text-slate-300">Distance</span>
+<span class="text-primary font-bold bg-primary/10 px-2 py-0.5 rounded-md text-sm">7.5 km</span>
+</div>
+<input class="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer" max="15" min="0" step="0.5" type="range" value="7.5"/>
+<div class="flex justify-between text-xs text-slate-400 mt-2 font-medium">
+<span>0km</span>
+<span>15km</span>
+</div>
+</div>
+</header>
+<main class="space-y-6 pb-4">
+<section class="pl-5">
+<div class="flex justify-between items-center pr-5 mb-3">
+<h2 class="text-lg font-bold">Special Offers</h2>
+<a class="text-primary text-sm font-semibold hover:underline" href="#">See all</a>
+</div>
+<div class="flex overflow-x-auto gap-4 pb-4 pr-5 no-scrollbar snap-x">
+<div class="snap-center shrink-0 w-72 h-40 rounded-2xl relative overflow-hidden shadow-glow group">
+<img alt="Flash Sale" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB18yjTrzpmE1Xq2mPvLkTZkGmzZeD3x4Hm_l-okjRBzlSBj-wZ_5smX-t9BDisv0GS9uR-S2TCWOJSknfsPK1izg8ezHxlt5riXgwE3zaTnJuabYCtE2Zrzni3hEi2w_4Y3g9fP2-Lfw3zCTvpR7v-En5uI-0ee8r0AHqtLc5K221NJ-inl5Z2Nee2BZ0ejGlYsMIX_FxBbm3Mu6FvfINIwx8Hul1pHL_DCJ5Us371On4WPOjNBk56Q_4lIEdkuAc_QmPVQ-rhXm0"/>
+<div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
+<div class="relative z-10 p-5 h-full flex flex-col justify-center">
+<span class="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full w-fit mb-2">LIMITED TIME</span>
+<h3 class="text-white text-xl font-bold leading-tight mb-1">50% Off <br/>Summer Collection</h3>
+<button class="text-white text-xs font-semibold flex items-center gap-1 mt-2">
+                        Shop Now <span class="material-icons-round text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="snap-center shrink-0 w-72 h-40 rounded-2xl relative overflow-hidden shadow-md group">
+<img alt="Sneakers" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC-ipA5i9Xh-cXs7RgNe3moj2Dsv49ZMkADLJH7m4DFmrr9oMcmQY_spFqKR3uEY6Iqjxl92nHnnYrB5kh_sXxUsNZUqebtiZ10ew_ElfO2e529R23DL1Rot1aTDVMJ3peVmUiESaVxfWcuZgZV38T8bVzawyXDRvSUIweXzAiXxXxg0cYx7F0WvfE2oagCa0li4IuBlWrHr713CynI0D0rTMqDZ_2wwZc2TTgZUH8RWJ83qlLOxwCHms1IkVSNe9c76IqiuDGAvk"/>
+<div class="absolute inset-0 bg-gradient-to-r from-purple-900/80 to-transparent"></div>
+<div class="relative z-10 p-5 h-full flex flex-col justify-center">
+<span class="bg-white/20 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-full w-fit mb-2">NEW ARRIVAL</span>
+<h3 class="text-white text-xl font-bold leading-tight mb-1">Nike Air Max <br/>Exclusive</h3>
+</div>
+</div>
+</div>
+</section>
+<section class="px-5">
+<h2 class="text-lg font-bold mb-3">Continue Shopping</h2>
+<div class="bg-surface-light dark:bg-surface-dark border border-slate-100 dark:border-slate-800 rounded-2xl p-4 shadow-floating flex items-center gap-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-bl-full -mr-4 -mt-4 z-0"></div>
+<img alt="Headphones" class="w-16 h-16 object-contain rounded-lg bg-white dark:bg-slate-700 p-2 relative z-10 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBokp-asQAy7YGJF53pgIIFvEOA9B7DimccXKD2M00nLmXtUAiDB4faXk6_uo9kCsIFptB1aw6uEC3gcEou2hzd5Zg7oNxn9MP1Q2o88N5Gp2AZQHLQ8JKBYaBvqL9aQA7mFjCnENjOHJS3GsqsY4cqB1_QIr4aQGngxf8vhz0NBC4emnVcDv5dzGEwpGmsxeoXhgP8s-ogSR89QAFNR_SHsYIE1jdQXD1OGHmNocpL7e_8M-s0ZM6E4T1e8uw4ldzqRMJWzm6cS5k"/>
+<div class="flex-1 relative z-10">
+<h3 class="font-bold text-slate-800 dark:text-slate-100">Sony WH-1000XM4</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mb-2">In cart: 1 item</p>
+<div class="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="w-2/3 h-full bg-primary rounded-full"></div>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary text-white shadow-glow flex items-center justify-center relative z-10">
+<span class="material-icons-round">chevron_right</span>
+</button>
+</div>
+</section>
+<section class="px-5">
+<div class="flex justify-between items-center mb-3">
+<h2 class="text-lg font-bold">Trending Products</h2>
+</div>
+<div class="space-y-4">
+<div class="bg-white dark:bg-surface-dark/60 rounded-3xl p-4 flex items-center gap-4 shadow-soft-shadow hover:shadow-lg transition-all duration-300">
+<div class="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center shrink-0">
+<span class="material-icons-round text-slate-300 text-3xl">smartphone</span>
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-slate-800 dark:text-slate-100 text-base">Smartphone Ultra</h3>
+<p class="text-primary font-bold text-sm mt-0.5">$899.00</p>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-orange-200/50 dark:shadow-none transition-transform hover:scale-105 active:scale-95">
+<span class="material-icons-round text-lg">arrow_forward</span>
+</button>
+</div>
+<div class="bg-white dark:bg-surface-dark/60 rounded-3xl p-4 flex items-center gap-4 shadow-soft-shadow hover:shadow-lg transition-all duration-300">
+<div class="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center shrink-0">
+<span class="material-icons-round text-slate-300 text-3xl">directions_run</span>
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-slate-800 dark:text-slate-100 text-base">Urban Sneakers</h3>
+<p class="text-primary font-bold text-sm mt-0.5">$129.50</p>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-orange-200/50 dark:shadow-none transition-transform hover:scale-105 active:scale-95">
+<span class="material-icons-round text-lg">arrow_forward</span>
+</button>
+</div>
+<div class="bg-white dark:bg-surface-dark/60 rounded-3xl p-4 flex items-center gap-4 shadow-soft-shadow hover:shadow-lg transition-all duration-300">
+<div class="w-16 h-16 rounded-2xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center shrink-0">
+<span class="material-icons-round text-slate-300 text-3xl">menu_book</span>
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-slate-800 dark:text-slate-100 text-base">Premium Notebook</h3>
+<p class="text-primary font-bold text-sm mt-0.5">$24.99</p>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-orange-200/50 dark:shadow-none transition-transform hover:scale-105 active:scale-95">
+<span class="material-icons-round text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<section class="pl-5">
+<h2 class="text-lg font-bold mb-4">Recommended Stores</h2>
+<div class="flex overflow-x-auto gap-4 pb-4 pr-5 no-scrollbar">
+<div class="shrink-0 w-36 h-36 rounded-2xl relative overflow-hidden shadow-floating-glow group">
+<img alt="Fashion Boutique" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv99cycKc7u-2EIrWsMull4nHzcMWmNBq0IwhLlgDgAmczbm7tQKpVGEYc8vWFfEBGL0dSXfyrDTLFfyTqmvt4Bq0lOne5esDsOTLVVv6jTM99gSlS9Mq1QlBImwG1ab95F7lQk96u1IuswIzpHZ8plXinr3YbBoNL_5yOEvwmAEvCdhDQCmXcL28I6CYXKNWzhM0HBGzh1OnnX3kNZs82MGGhVLscT8rcgSDkH5riRDMjhGIprCtBCerW8jo-l5Iaz2CYN3IgHoQ"/>
+<div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent backdrop-blur-[2px]"></div>
+<div class="absolute bottom-3 left-3 right-3 z-10">
+<h3 class="text-white font-bold text-sm drop-shadow-sm">Zara Home</h3>
+<p class="text-gray-200 text-[10px] drop-shadow-sm">Interior Design</p>
+</div>
+</div>
+<div class="shrink-0 w-36 h-36 rounded-2xl relative overflow-hidden shadow-floating-glow border-2 border-primary/30">
+<img alt="Barcelona Store" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdfnL8Q7HgaUaOmUSvSuc2ahNLHZ96D5phEYDURotvBrN2Td-fwpefghFAJYqewnmKkQakAk-EU1fXNeEfQnfgfH-iJJikV6R6HqthFCo0B_joeMBbOENJk9qnae338f3YoyfhKMphXE9rlSD9CVLznFOFKmcxUe6JmShendNQzZRNzI839y0RypTyZgPbSnNclp-t9d6hOlMfMLvR8gW2Wq8x7EU0ULgDWvn7meiRI6cbTQ0btPRmMrt3bq1clJ6J60xIXxlaR2Y"/>
+<div class="absolute top-2 right-2 bg-black/40 backdrop-blur-sm rounded-full px-2 py-0.5 z-20">
+<span class="text-white text-[10px] font-bold">24</span>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent backdrop-blur-[2px]"></div>
+<div class="absolute bottom-3 left-3 right-3 z-10">
+<h3 class="text-white font-bold text-sm drop-shadow-sm">Barcellona</h3>
+<p class="text-gray-200 text-[10px] drop-shadow-sm">Imported Goods</p>
+</div>
+</div>
+<div class="shrink-0 w-36 h-36 rounded-2xl relative overflow-hidden shadow-floating-glow">
+<img alt="Tech Hub" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM-MPjh4bfRTRd0b7XY9ZVfK2rXjhNbRJZfABc0Cau8BZQNkQTtfg6q-JJ_LB_fK1WRdoODn_EQ2ShzesPbBE0ueh4QIhA8yA_PDPhD-0aoS8FEQQ00_5tvoVJQs0obfX1WjBJkFR1c5Zb0aRFJ8rA43jSdDzy4tKjdPmFl4mnP6DwegkdY3ah1X43CR-iI8F2V0AuPgBeDWEnJxTYlcUaqQWFXn4u_v32ra4ZkEtn9BrcbZ9kWM7sjwJcoCb91PNWU0htq42CPPc"/>
+<div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent backdrop-blur-[2px]"></div>
+<div class="absolute bottom-3 left-3 right-3 z-10">
+<h3 class="text-white font-bold text-sm drop-shadow-sm">Tech Hub</h3>
+<p class="text-gray-200 text-[10px] drop-shadow-sm">Electronics</p>
+</div>
+</div>
+</div>
+</section>
+<section class="px-5">
+<h2 class="text-lg font-bold mb-3">You Might Like</h2>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-light dark:bg-surface-dark p-3 rounded-2xl shadow-floating-glow border border-slate-100 dark:border-slate-800">
+<div class="h-32 rounded-xl bg-slate-100 dark:bg-slate-800 mb-3 relative overflow-hidden group">
+<img alt="Watch" class="w-full h-full object-cover mix-blend-multiply dark:mix-blend-normal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDpwZoI5HE93TXoIYIR0g7Z8ds89hMSRhTKsfptllV15IjxrPyXZQ5PHq_RWjLnmvylttRjJm-HDTQhnT9I-1wNc-X82kpl10v68fu7-6LdD2w1_j11xh_lmqvfxkeU_h8Nz6qIfok-B8BMP1OZMvzZErWcNbKPW48bpxmQonCm4iahPCqyEwCD4uGZb6nC9de9BrssXG-FupjsLYdCgXi2Qa8bssowVmElUEakZYVu-aWCiMfrxKei113D3w8-XP2qMy-58OeBUY"/>
+<div class="absolute top-2 right-2 bg-white/80 dark:bg-black/60 backdrop-blur-sm rounded-full p-1">
+<span class="material-icons-round text-rose-500 text-xs block">favorite</span>
+</div>
+</div>
+<h3 class="font-bold text-sm truncate">Smart Watch V2</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-bold text-sm">$199</span>
+<span class="text-[10px] text-slate-400">4.8 <i class="material-icons-round text-[10px] text-amber-400 align-middle">star</i></span>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-3 rounded-2xl shadow-floating-glow border border-slate-100 dark:border-slate-800">
+<div class="h-32 rounded-xl bg-slate-100 dark:bg-slate-800 mb-3 relative overflow-hidden">
+<img alt="Smart Watch" class="w-full h-full object-cover mix-blend-multiply dark:mix-blend-normal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM3izw5lgC8QcRQWcgMn37QflB8LmXpuMJ-5xvDnKr_MO3CHO8h7ujdfyOratd2WSkxDKoEb0nCGcgnBgaOT17jjke2XWJdnGpNdAJGKNzdGQuMzo4Ynbe_h2HLhHZbra1dFbvVj-CHzEx7JxVS4_STx1u4DHKfVXC3wzBndGFxg7R8eWqZPdo8XKSg-_BzJHkWTJU-FkH58zO3OojjeImNgCBL3RxF1ld0sbfLF5zAZeISUEdpq5v32qcbhK_M7E5K2Dm7w6YdxU"/>
+</div>
+<h3 class="font-bold text-sm truncate">Apple Watch Series</h3>
+<div class="flex justify-between items-center mt-1">
+<span class="text-primary font-bold text-sm">$399</span>
+<span class="text-[10px] text-slate-400">4.9 <i class="material-icons-round text-[10px] text-amber-400 align-middle">star</i></span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-6 left-6 right-6 h-[72px] bg-white dark:bg-surface-dark backdrop-blur-xl rounded-[2rem] shadow-nav-shadow flex justify-around items-center z-50 px-2 overflow-visible border border-slate-100/50 dark:border-slate-800/50">
+<a class="flex flex-col items-center justify-center w-14 h-14 text-primary gap-1 transition-all group" href="#">
+<span class="material-icons-round text-3xl text-glow-orange">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center w-14 h-14 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors gap-1 group" href="#">
+<span class="material-icons-round text-2xl group-hover:scale-110 transition-transform">shopping_bag</span>
+<span class="text-[10px] font-medium">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center w-14 h-14 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors gap-1 group" href="#">
+<span class="material-icons-round text-2xl group-hover:scale-110 transition-transform">favorite_border</span>
+<span class="text-[10px] font-medium">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center w-14 h-14 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 transition-colors gap-1 group" href="#">
+<span class="material-icons-round text-2xl group-hover:scale-110 transition-transform">search</span>
+<span class="text-[10px] font-medium">Search</span>
+</a>
+</nav>
+</body></html>
